@@ -28,7 +28,8 @@ if (Meteor.isClient) {
   });
 
   Deps.autorun( function() {
-    var data = points.find().fetch();
+    var data = points.find({}).fetch();
+    $('h2').hide();
     if (svg) {
       if (data.length < 1) {
         clearSvg();
