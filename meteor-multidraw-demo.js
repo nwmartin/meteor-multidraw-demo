@@ -30,6 +30,9 @@ if (Meteor.isClient) {
   Deps.autorun( function() {
     var data = points.find().fetch();
     if (svg) {
+      if (data.length < 1) {
+        clearSvg();
+      }
       svg.selectAll('circle').data(data, function(d) { return d._id; })
       .enter().append('circle')
       .attr('r', 10)
