@@ -3,11 +3,11 @@
 </head>
 
 <body>
-  {{> hello}}
+  {{> drawingSurface}}
 </body>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
+<template name="drawingSurface">
+  <h1>Draw Something</h1>
+  {{#each points}}
+  {{/each}}
 </template>

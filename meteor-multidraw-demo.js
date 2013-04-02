@@ -1,19 +1,16 @@
-if (Meteor.isClient) {
-  Template.hello.greeting = function () {
-    return "Welcome to meteor-multidraw-demo.";
-  };
+points = new Meteor.Collection('points');
 
-  Template.hello.events({
-    'click input' : function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined')
-        console.log("You pressed the button");
-    }
-  });
+if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    // code to run on server at startup
+    if (points.find().count() == 0) {
+      points.insert({x: 100, y: 100});
+      points.insert({x: 100, y: 200});
+      points.insert({x: 100, y: 300});
+      points.insert({x: 100, y: 400});
+      points.insert({x: 100, y: 500});
+    }
   });
 }
