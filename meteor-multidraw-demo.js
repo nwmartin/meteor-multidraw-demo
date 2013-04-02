@@ -1,6 +1,9 @@
 points = new Meteor.Collection('points');
 
 if (Meteor.isClient) {
+  Template.drawingSurface.points = function () {
+    return points.find();
+  }
 }
 
 if (Meteor.isServer) {
