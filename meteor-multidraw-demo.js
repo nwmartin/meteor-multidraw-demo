@@ -4,6 +4,17 @@ if (Meteor.isClient) {
 
   var svg;
 
+  var createSvg = function() {
+    svg = d3.select('#canvas').append('svg')
+      .attr('width', '100%')
+      .attr('height', '100%');
+  }
+
+  var clearSvg = function() {
+    d3.select('svg').remove();
+    createSvg();
+  }
+
   Template.drawingSurface.points = function () {
     return points.find();
   }
@@ -13,9 +24,7 @@ if (Meteor.isClient) {
   });
 
   Meteor.startup( function() {
-    svg = d3.select('#canvas').append('svg')
-      .attr('width', '100%')
-      .attr('height', '100%');
+    createSvg();
   });
 
   Deps.autorun( function() {
@@ -30,11 +39,30 @@ if (Meteor.isClient) {
   });
 
   Template.drawingSurface.events({
+    'click input': function (event) {
+      Meteor.call('clear', function() {
+        clearSvg();
+      });
+    },
     'click': function (event) {
       var offset = $('#canvas').offset();
       points.insert({
         x: (event.x - offset.left),
         y: (event.y - offset.top)});
+    },
+    'mousedown': function (event) {
+      Session.set('draw', true);
+    },
+    'mouseup': function (event) {
+      Session.set('draw', false);
+    },
+    'mousemove': function (event) {
+      if (Session.get('draw')) {
+        var offset = $('#canvas').offset();
+        points.insert({
+        x: (event.x - offset.left),
+        y: (event.y - offset.top)});
+      }
     }
   });
 }
@@ -44,13 +72,9 @@ if (Meteor.isServer) {
     return points.find();
   });
 
-  Meteor.startup(function () {
-    if (points.find().count() == 0) {
-      points.insert({x: 100, y: 100});
-      points.insert({x: 100, y: 200});
-      points.insert({x: 100, y: 300});
-      points.insert({x: 100, y: 400});
-      points.insert({x: 100, y: 500});
+  Meteor.methods({
+    'clear': function () {
+      points.remove({});
     }
   });
 }

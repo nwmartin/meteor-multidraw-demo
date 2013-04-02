@@ -1,1 +1,9 @@
 /* CSS declarations go here */
+h1 {
+  display: inline-block;
+}
+.clearButton {
+  position: relative;
+  margin-left: 5em;
+  top: -0.3em;
+}
