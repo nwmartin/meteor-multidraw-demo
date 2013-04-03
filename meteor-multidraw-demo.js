@@ -51,8 +51,8 @@ if (Meteor.isClient) {
     'click': function (event) {
       var offset = $('#canvas').offset();
       points.insert({
-        x: (event.x - offset.left),
-        y: (event.y - offset.top)});
+        x: (event.pageX - offset.left),
+        y: (event.pageY - offset.top)});
     },
     'mousedown': function (event) {
       Session.set('draw', true);
@@ -64,8 +64,8 @@ if (Meteor.isClient) {
       if (Session.get('draw')) {
         var offset = $('#canvas').offset();
         points.insert({
-        x: (event.x - offset.left),
-        y: (event.y - offset.top)});
+        x: (event.pageX - offset.left),
+        y: (event.pageY - offset.top)});
       }
     }
   });
