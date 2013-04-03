@@ -33,7 +33,10 @@ Template.drawingSurface.events({
     Meteor.call('clear', function() {
       canvas.clear();
     });
-  },
+  }
+})
+
+Template.canvas.events({
   'click': function (event) {
     markPoint();
   },
