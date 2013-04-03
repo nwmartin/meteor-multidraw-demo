@@ -2,6 +2,27 @@ Hi there!
 =========
 This is an amusing demo that shows some of the stuff Meteor lets you get away with, with minimal effort. It's not meant to be an exhaustive overview of everything Meteor offers, but it's a pretty good starting point.
 
+If you have any questions, ASK!
+
+Topics Covered
+--------------
+- WTH is Meteor?
+- Client vs Server
+- Templates
+- Reactivity
+- Events
+- Collections
+- Cursors
+- Session
+- Mongo
+- Publish/Subscribe
+- Startup
+- Autorun
+- Meteor.call & Meteor.methods
+- Project Structure
+- Meteorite & Atmosphere
+- Some Random JS and d3.
+
 Setup
 -----
 
