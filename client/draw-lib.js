@@ -15,6 +15,10 @@ function Canvas() {
   };
 
   self.draw = function(data) {
+    if (data.length < 1) {
+      self.clear();
+      return;
+    }
     if (svg) {
       svg.selectAll('circle').data(data, function(d) { return d._id; })
       .enter().append('circle')

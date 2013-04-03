@@ -11,18 +11,22 @@ Deps.autorun( function () {
 
 Meteor.startup( function() {
   canvas = new Canvas();
+
+  Deps.autorun( function() {
+    var data = points.find({}).fetch();
+    $('h2').hide();
+    if (canvas) {
+      canvas.draw(data);
+    }
+  });
 });
 
-Deps.autorun( function() {
-  var data = points.find({}).fetch();
-  $('h2').hide();
-  if (canvas) {
-    if (data.length < 1) {
-      canvas.clear();
-    }
-    canvas.draw(data);
-  }
-});
+var markPoint = function() {
+  var offset = $('#canvas').offset();
+      points.insert({
+      x: (event.pageX - offset.left),
+      y: (event.pageY - offset.top)});
+}
 
 Template.drawingSurface.events({
   'click input': function (event) {
@@ -31,10 +35,7 @@ Template.drawingSurface.events({
     });
   },
   'click': function (event) {
-    var offset = $('#Canvas').offset();
-    points.insert({
-      x: (event.pageX - offset.left),
-      y: (event.pageY - offset.top)});
+    markPoint();
   },
   'mousedown': function (event) {
     Session.set('draw', true);
@@ -44,10 +45,7 @@ Template.drawingSurface.events({
   },
   'mousemove': function (event) {
     if (Session.get('draw')) {
-      var offset = $('#canvas').offset();
-      points.insert({
-      x: (event.pageX - offset.left),
-      y: (event.pageY - offset.top)});
+      markPoint();
     }
   }
 });
