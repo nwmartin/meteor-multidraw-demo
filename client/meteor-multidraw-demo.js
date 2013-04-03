@@ -1,10 +1,6 @@
 points = new Meteor.Collection('pointsCollection');
 var canvas;
 
-Template.drawingSurface.points = function () {
-  return points.find();
-}
-
 Deps.autorun( function () {
   Meteor.subscribe('pointsSubscription');
 });
@@ -21,11 +17,8 @@ Meteor.startup( function() {
   });
 });
 
-var markPoint = function() {
-  var offset = $('#canvas').offset();
-      points.insert({
-      x: (event.pageX - offset.left),
-      y: (event.pageY - offset.top)});
+Template.drawingSurface.title = function () {
+  return 'Draw Something';
 }
 
 Template.drawingSurface.events({
@@ -35,6 +28,13 @@ Template.drawingSurface.events({
     });
   }
 })
+
+var markPoint = function() {
+  var offset = $('#canvas').offset();
+      points.insert({
+      x: (event.pageX - offset.left),
+      y: (event.pageY - offset.top)});
+}
 
 Template.canvas.events({
   'click': function (event) {
