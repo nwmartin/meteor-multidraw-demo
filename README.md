@@ -10,6 +10,13 @@ You're going to want to have Chrome. Firefox has performance issues with renderi
 We're going to add some packages from the [atmosphere](https://atmosphere.meteor.com/) repository. It has a ton of packages that aren't Meteor defaults and is super useful. To do this, we'll need [meteorite](https://github.com/oortcloud/meteorite), which requires [npm](https://npmjs.org/). So...
 
 Download and install [npm](http://nodejs.org/download/). It's also on brew and aptitude (Ubuntu).
-Use npm to install meteorite: `sudo npm install -g meteorite` If you're on Windows, try [this](http://themeteorbook.com/2013/03/20/using-meteor-and-atmopshere-on-windows). You should be able to run `mrt -v` if everything is OK. If you get command not found, try adding `/usr/local/share/npm/bin` to your PATH.
+
+Use npm to install meteorite: `sudo npm install -g meteorite`
+
+If you're on Windows, try [this](http://themeteorbook.com/2013/03/20/using-meteor-and-atmopshere-on-windows).
+
+You should be able to run `mrt -v` if everything is OK. If you get command not found, try adding `/usr/local/share/npm/bin` to your PATH.
+
 You'll need [git](http://git-scm.com/). Now you can clone this repository: `git clone git://github.com/nwmartin/meteor-multidraw-demo.git`
+
 You should be able to set everything up and run the demo with `mrt run`. Cheers!
