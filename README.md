@@ -1,6 +1,6 @@
 Hi there!
 =========
-This is an amusing demo that shows some of the stuff Meteor lets you get away with, with minimal effort. It's not meant to be an exhaustive overview of everything Meteor offers, but it's a pretty good starting point.
+This is an amusing demo that shows some of the stuff Meteor lets you get away with, with minimal effort. It's not meant to be an exhaustive overview of everything Meteor offers, but it's a pretty good starting point. It's running live at [draw-with-me.meteor.com](http://draw-with-me.meteor.com/)
 
 If you have any questions, ASK!
 

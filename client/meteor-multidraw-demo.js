@@ -18,7 +18,7 @@ Meteor.startup( function() {
 });
 
 Template.drawingSurface.title = function () {
-  return 'Draw Something';
+  return 'Draw with Me! (A Collaborative, Real-Time Drawing Environment) Works best in Chrome.';
 }
 
 Template.drawingSurface.events({
