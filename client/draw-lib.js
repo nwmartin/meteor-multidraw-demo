@@ -1,4 +1,4 @@
-function Canvas() {
+Canvas = function () {
   var self = this;
   var svg;
 
